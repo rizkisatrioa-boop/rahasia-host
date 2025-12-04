@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nembak Cewek</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff9ff3, #f368e0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: beat 1.5s infinite;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: #e74c3c;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .question {
+            font-size: 2em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 20px 0;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative; /* Untuk animasi menghindar */
+        }
+        .yes {
+            background: #27ae60;
+            color: white;
+        }
+        .yes:hover {
+            background: #2ecc71;
+        }
+        .no {
+            background: #e74c3c;
+            color: white;
+        }
+        .no:hover {
+            background: #c0392b;
+        }
+        .message {
+            display: none;
+            font-size: 1.5em;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+    <div class="question">lea , mau jadi pacar aku? 💕</div>
+    <div class="buttons">
+        <button class="yes">Ya!</button>
+        <button class="no">Tidak</button>
+    </div>
+    <div class="message" id="message"></div>
+    
+    <script>
+        const yesBtn = document.querySelector('.yes');
+        const noBtn = document.querySelector('.no');
+        const message = document.getElementById('message');
+        
+        yesBtn.addEventListener('click', function() {
+            message.textContent = 'Yey! Aku senang banget! 😍';
+            message.style.display = 'block';
+        });
+        
+        noBtn.addEventListener('click', function() {
+            message.textContent = 'Haha, gapapa! Temanan dulu ya? 😉';
+            message.style.display = 'block';
+        });
+        
+        // Fitur menghindar untuk tombol "Tidak"
+        noBtn.addEventListener('mouseover', function() {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        });
+    </script>
+</body>
+</html>
