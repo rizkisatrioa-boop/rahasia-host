@@ -1,0 +1,25 @@
+.ukuran-image{
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.whatapp-float{
+    position: fixed;
+    bottom: 20px;
+    right: 24px;
+    z-index: 1050;
+    background-color: rgb(9, 207, 9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+.home{
+    background-image: url(assets/image/anda.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
